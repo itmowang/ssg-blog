@@ -1,9 +1,15 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import Pages from "vite-plugin-pages";
+import Router from "unplugin-vue-router/vite";
 
 export default defineConfig({
-  plugins: [vue(), Pages({ extensions: ["vue", "md"] })],
+  plugins: [
+    vue(),
+    Router({
+      routesFolder: "src/pages",
+      extensions: [".vue", ".md"],
+    }),
+  ],
   ssgOptions: {
     script: "async",
     formatting: "prettify",
