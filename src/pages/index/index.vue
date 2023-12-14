@@ -1,13 +1,13 @@
 <template>
   <div class="Index">
+    <Header></Header>
     <div>Index</div>
-    <div>{{ index }}</div>
-    <div>{{ index2 }}</div>
   </div>
 </template>
 <script lang="tsx" setup>
 import { ref } from "vue";
+import config from '../../config';
+const {SITE_THEME} = config;
+import Header from '@theme/default/header.vue';
 
-const index = ref("idx");
-const index2 = ref("Leo");
 </script>
