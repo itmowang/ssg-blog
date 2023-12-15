@@ -9,16 +9,15 @@
 <script lang="tsx" setup>
 import { useRoute } from "vue-router";
 import mdTransformer from "@/utils/mdTransform";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const router = useRoute();
 const html = ref("");
 
-mdTransformer(router).then((result) => {
-  console.log(result);
-  html.value = result;
+onMounted(async() => { 
+  html.value = await mdTransformer(router)
   console.log(html.value);
   
-}); 
+});
 
 </script>
 

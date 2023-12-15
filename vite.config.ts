@@ -29,7 +29,9 @@ export default defineConfig({
           return route.path;
         } else {
           if (route.children && route.children.length > 0) {
-            const test =  route.children.map((child: any) => {
+            const test =  route.children.map((child: {
+              name: string;
+            }) => {
               // 判断 child.path 中是否为动态路由
               const is = /\[(.+)\]/.test(child.name);
               // 如果是动态路由 匹配content 文件夹下的文件
