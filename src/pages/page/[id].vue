@@ -1,24 +1,16 @@
 <template>
   <div>
-    123123BPAGEASDASDSD
-    <div v-html="html"></div>
-    <div>123123{{ html }}</div>
+    <div class="test" v-html="html"></div>
   </div>
 </template>
 
 <script lang="tsx" setup>
 import { useRoute } from "vue-router";
 import mdTransformer from "@/utils/mdTransform";
-import { onMounted, ref } from "vue";
-const router = useRoute();
+import { ref } from "vue";
+const route = useRoute();
 const html = ref("");
-
-onMounted(async() => { 
-  html.value = await mdTransformer(router)
-  console.log(html.value);
-  
-});
-
+html.value = await mdTransformer(route);
 </script>
 
 <style></style>

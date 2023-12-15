@@ -1,8 +1,9 @@
 import markdownit from "markdown-it";
 import path from "path";
 import fs from "fs";
+import { RouteLocationNormalized } from "vue-router";
 
-const MdContent = async (route: any) => {
+const MdContent = async (route: RouteLocationNormalized) => {
   let markdownContent;
   if (!import.meta.env.PROD) {
     const currentUrl = new URL(import.meta.url);
