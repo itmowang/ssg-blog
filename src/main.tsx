@@ -11,6 +11,7 @@ export const createApp = ViteSSG(
   App,
   { routes },
   ({ app, router, routes, isClient, initialState }) => {
+    // console.log("app", routes);
     useHead({
       title: SITE_TITLE,
       meta:[{
@@ -23,3 +24,5 @@ export const createApp = ViteSSG(
     rootContainer: "#app",
   }
 );
+
+
