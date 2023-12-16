@@ -1,6 +1,14 @@
-import config from "../config";
 import "./default/assets/styles/global.less";
-const { SITE_THEME } = config;
-console.log(132);
+import "./default/assets/styles/article.less";
+import Header from "./default/header.vue";
+import Content from "./default/content.vue";
+import Footer from "./default/footer.vue";
 
-export default {};
+
+export default {
+   install: (app: any) => {
+        app.component("Header", Header);
+        app.component("Content", Content);
+        app.component("Footer", Footer);
+   }
+};

@@ -4,7 +4,8 @@ import App from "./App.vue";
 import { routes } from "vue-router/auto/routes";
 import { useHead, useSeoMeta } from "@unhead/vue";
 import config from "./config";
-import theme from "@theme/index";
+import theme from "@/theme";
+
 
 const { SITE_TITLE, SITE_DESCRIPTION, SITE_META } = config;
 
@@ -12,6 +13,8 @@ export const createApp = ViteSSG(
   App,
   { routes },
   ({ app, router, routes, isClient, initialState }) => {
+    // 注册模板组件
+    app.use(theme);
     // console.log("app", routes);
     useHead({
       title: SITE_TITLE,
