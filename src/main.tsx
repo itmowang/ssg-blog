@@ -6,16 +6,22 @@ import { useHead, useSeoMeta } from "@unhead/vue";
 import config from "./config";
 import theme from "@/theme";
 
-
 const { SITE_TITLE, SITE_DESCRIPTION, SITE_META } = config;
 
 export const createApp = ViteSSG(
   App,
   { routes },
-  ({ app, router, routes, isClient, initialState }) => {
-    // 注册模板组件
+  ({
+    app,
+    router,
+    routes,
+    isClient,
+    initialState,
+    onSSRAppRendered,
+    triggerOnSSRAppRendered,
+  }) => {
     app.use(theme);
-    // console.log("app", routes);
+    // 注册模板组件
     useHead({
       title: SITE_TITLE,
       meta: [
@@ -27,6 +33,7 @@ export const createApp = ViteSSG(
       ],
     });
   },
+
   {
     rootContainer: "#app",
   }

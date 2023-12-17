@@ -2,12 +2,10 @@
   <div>
     <Header></Header>
     <Content></Content>
-    <Footer></Footer> 
+    <Footer></Footer>
   </div>
 </template>
 
-<script lang="tsx" setup>
-
-</script>
+<script lang="tsx" setup></script>
 
 <style></style>

@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import Router from "unplugin-vue-router/vite";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-// import ViteMdPagesPlugin from "./vite-plugin-md-pages";
+import ViteMdPagesPlugin from "./vite-plugin-md-pages";
 import fs from "fs";
 
 export default defineConfig({
@@ -13,12 +13,12 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
-    vueJsx(),
     // ViteMdPagesPlugin({
     //   input: "src/pages",
     //   contentPath: "src/content",
     // }),
+    vue(),
+    vueJsx(),
     Router({
       routesFolder: "src/pages",
       extensions: [".vue", ".md"],
