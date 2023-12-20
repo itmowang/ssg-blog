@@ -1,27 +1,18 @@
 <template>
   <div class="md-content">
-    <div class="md-html" v-html="html"></div>
+    <div class="md-html">
+      <MdContent />
+    </div>
   </div>
 </template>
 <script lang="tsx" setup>
-import { RouteLocationNormalized, useRoute } from "vue-router";
-import { onMounted, ref } from "vue";
-import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
-import { md } from "@/utils/md";
-
+import { defineAsyncComponent } from "vue";
+import { useRoute } from "vue-router";
 const route = useRoute();
-const html = ref("");
-html.value = await md(route);
 
-const highlightCode = () => {
-  const mdHtmlElement = document.querySelector(".md-html");
-  if (mdHtmlElement) {
-    const codeBlocks = mdHtmlElement.querySelectorAll("pre code");
-
-    codeBlocks.forEach((block: any) => {
-      hljs.highlightBlock(block);
-    });
-  }
-};
+const dynamicPath = import.meta.env.PROD
+  ? `../../src/content${route.path}/doc.md`
+  : `../../content${route.path}/doc.md`;
+// Md 实例组件
+const MdContent = defineAsyncComponent(() => import(dynamicPath));
 </script>

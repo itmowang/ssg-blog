@@ -4,21 +4,22 @@ import Router from "unplugin-vue-router/vite";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import ViteMdPagesPlugin from "./vite-plugin-md-pages";
 import fs from "fs";
+import Markdown from "vite-plugin-md";
+import path from "path";
 
 export default defineConfig({
   resolve: {
     alias: {
-      "@": "/src",
+      "@": path.resolve(__dirname, "src"),
       "@theme": "./src/theme",
     },
   },
   plugins: [
-    // ViteMdPagesPlugin({
-    //   input: "src/pages",
-    //   contentPath: "src/content",
-    // }),
-    vue(),
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
     vueJsx(),
+    Markdown(),
     Router({
       routesFolder: "src/pages",
       extensions: [".vue", ".md"],
